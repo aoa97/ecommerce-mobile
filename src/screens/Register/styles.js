@@ -2,12 +2,6 @@ import { StyleSheet } from "react-native";
 import colors from '../../assets/colors/colors';
 
 const styles = StyleSheet.create({
-    container: {
-        paddingHorizontal: 22,
-        paddingVertical: 60,
-        flex: 1,
-        backgroundColor: colors.black,
-    },
     textWrapper: {
         alignItems: 'center'
     },
@@ -28,20 +22,6 @@ const styles = StyleSheet.create({
         marginTop: 28,
         backgroundColor: "#262A34",
         color: "#FFF"
-    },
-    btnWrapper: {
-        width: "100%",
-        height: 49,
-        borderRadius: 5,
-        backgroundColor:  colors.blue,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 28
-    },
-    btnText: {
-        fontFamily: 'Montserrat-Bold',
-        fontSize: 14,
-        color: colors.white,
     },
     alreadyWrapper: {
         marginTop: 28,

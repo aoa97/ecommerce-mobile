@@ -3,13 +3,13 @@ import { Text, View } from 'react-native';
 
 import colors from '../assets/colors/colors';
 
-const Title = ({ children, style, light }) => {
+const Title = ({ children, style, light, size }) => {
     return (
         <View style={style}>
             <Text
                 style={{
                     fontFamily: 'Montserrat-SemiBold',
-                    fontSize: 18,
+                    fontSize: size ? size : 18,
                     color: light ? colors.white : colors.black
                 }}
             >

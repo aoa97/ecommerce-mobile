@@ -1,13 +1,15 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView, ImageBackground, FlatList, TextInput, StatusBar } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, StatusBar } from 'react-native';
 
+import Container from '../../components/Container';
 import Title from '../../components/Title';
+import Button from '../../components/Button';
 import colors from '../../assets/colors/colors';
 import styles from './styles';
 
 const Login = ({ navigation }) => {
     return (
-        <View style={styles.container}>
+        <Container dark  style={{ paddingVertical: 22 }}>
             <StatusBar translucent backgroundColor="transparent" />
 
             {/* Text */}
@@ -33,9 +35,7 @@ const Login = ({ navigation }) => {
                     <Text style={styles.subtitle}>Forgot Password?</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btnWrapper}>
-                    <Text style={styles.btnText}>SIGN IN</Text>
-                </TouchableOpacity>
+                <Button blue style={{ marginTop: 28 }}>SIGN IN</Button>
             </View>
 
             {/* Don't have an account */}
@@ -43,7 +43,7 @@ const Login = ({ navigation }) => {
                 <Text style={styles.dontText}>Don't have an account?</Text>
                 <Text style={styles.dontLink}>Sign Up</Text>
             </TouchableOpacity>
-        </View>
+        </Container>
     );
 }
 

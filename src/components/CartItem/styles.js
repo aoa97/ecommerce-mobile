@@ -3,8 +3,8 @@ import colors from '../../assets/colors/colors';
 
 const styles = StyleSheet.create({
     container: {
-        width: 371,
-        height: 94,
+        width: '100%',
+        height: 126,
         borderRadius: 10,
         backgroundColor: colors.white,
         marginBottom: 9,
@@ -12,20 +12,35 @@ const styles = StyleSheet.create({
         paddingLeft: 5,
         paddingRight: 20,
         flexDirection: 'row',
+    },
+    image: {
+        width: '26%',
+        height: 90,
+        resizeMode: 'contain',
+        marginRight: 5,
+        marginTop: -12
+    },
+    verticalContainer: {
+        justifyContent: 'space-between',
+        width: '75%',
+    },
+    textWrapper: {
+        marginBottom: 5
+    },
+    cartButtons: {
+        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between'
     },
-    image: {
-        width: '25%',
-        height: 78,
+    removeWrapper: {
+        flexDirection: 'row',
+        alignItems: 'center'
     },
-    textWrapper: {
-        width: "60%",
-        height: "100%",
-        justifyContent: 'space-between',
-    },
-    likeIcon: {
-        alignSelf: 'flex-start'
+    removeText: {
+        fontFamily: 'Montserrat-Medium',
+        fontSize: 14,
+        color: colors.gray,
+        marginLeft: 4
     },
     name: {
         fontFamily: 'Montserrat-Medium',
@@ -36,6 +51,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat-Medium',
         fontSize: 13,
         color: colors.gray,
+        marginVertical: 3
     },
     price: {
         fontFamily: 'Montserrat-Bold',

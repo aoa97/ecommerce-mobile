@@ -1,13 +1,15 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ScrollView, ImageBackground, FlatList, TextInput, StatusBar } from 'react-native';
 
+import Container from '../../components/Container';
 import Title from '../../components/Title';
+import Button from '../../components/Button';
 import colors from '../../assets/colors/colors';
 import styles from './styles';
 
 const Register = ({ navigation }) => {
     return (
-        <View style={styles.container}>
+        <Container dark style={{ paddingVertical: 22 }}>
             <StatusBar translucent backgroundColor="transparent" />
 
             {/* Text */}
@@ -39,9 +41,7 @@ const Register = ({ navigation }) => {
                     placeholder="Password"
                 />
 
-                <TouchableOpacity style={styles.btnWrapper}>
-                    <Text style={styles.btnText}>SIGN Up</Text>
-                </TouchableOpacity>
+                <Button blue style={{ marginTop: 28 }}>SIGN UP</Button>
             </View>
 
             {/* Already have an account */}
@@ -49,7 +49,7 @@ const Register = ({ navigation }) => {
                 <Text style={styles.alreadyText}>Already have an account?</Text>
                 <Text style={styles.alreadyLink}>Sign In</Text>
             </TouchableOpacity>
-        </View>
+        </Container>
     );
 }
 

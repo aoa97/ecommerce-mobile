@@ -1,25 +1,35 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView, ImageBackground, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, ImageBackground, FlatList, Image } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather'
 
 import Container from '../../components/Container';
 import Popular from '../../components/Popular';
 import Title from '../../components/Title';
-import Product from '../../components/Product/index';
+import Product from '../../components/Product';
+import IconButton from '../../components/IconButton';
 import colors from '../../assets/colors/colors';
 import styles from './styles';
+
 import productData from '../../assets/data/productData' // Temp Dummy Data 
+import userData from '../../assets/data/userData' // Temp Dummy Data 
+
+
+// temp for testing both UI Scenarions (Auth/Not)
+const user = !userData ? userData : undefined
+
 
 const Home = ({ navigation }) => {
     return (
-        <Container scroll>
+        <Container>
             {/* Best Selling */}
             <FlatList
                 style={styles.bestItemsWrapper}
                 data={productData}
                 keyExtractor={item => item.id}
                 renderItem={({ item }) => (
-                    <Product product={item} />
+                    <TouchableOpacity onPress={() => navigation.navigate("Product", item)}>
+                        <Product product={item} />
+                    </TouchableOpacity>
                 )}
                 ListHeaderComponent={() => <FlatHeader navigation={navigation} />}
                 showsVerticalScrollIndicator={false}
@@ -32,42 +42,71 @@ const FlatHeader = ({ navigation }) => (
     <>
         {/* Header */}
         <View style={styles.headerContainer}>
-            <View style={styles.textWrapper}>
-                <Text style={styles.message1}>Welcome!</Text>
-                <Text style={styles.message2}>Nice to meet you :)</Text>
-            </View>
+            {/* Auth => User Avatar */}
+            {user && (
+                <Image
+                    source={{ uri: user.image }}
+                    style={styles.userAvatar}
+                />
+            )}
 
+            {/* Not Auth => Welcome text */}
+            {!user && (
+                <View style={styles.textWrapper}>
+                    <Text style={styles.message1}>Welcome!</Text>
+                    <Text style={styles.message2}>Nice to meet you :)</Text>
+                </View>
+            )}
+
+            {/* (Auth/Not) => Right Icons */}
             <View style={styles.iconsWrapper}>
-                <TouchableOpacity>
-                    <Feather color={colors.black} name='search' size={23} />
-                </TouchableOpacity>
+                <IconButton
+                    name='search'
+                    size={23}
+                    onPress={() => navigation.navigate("Search")}
+                />
 
-                <TouchableOpacity>
-                    <Feather color={colors.black} name='shopping-bag' size={23} />
-                </TouchableOpacity>
+                <IconButton
+                    name='shopping-bag'
+                    size={23}
+                    onPress={() => navigation.navigate("Cart")}
+                />
 
-                <TouchableOpacity>
-                    <Feather color={colors.black} name='menu' size={23} />
-                </TouchableOpacity>
+                <IconButton
+                    name='menu'
+                    size={23}
+                    onPress={() => navigation.openDrawer()}
+                />
             </View>
         </View>
 
-        {/* Authentication */}
-        <View style={styles.authContainer}>
-            <TouchableOpacity style={styles.authBtnWrapper} onPress={() => navigation.navigate('Login')}>
-                <View style={styles.authBtn}>
-                    <Feather color={colors.black} name='user' size={17} />
-                </View>
-                <Text style={styles.authBtnText}>Sign In</Text>
-            </TouchableOpacity>
+        {/* (Auth) =>Hello Text  */}
+        {user && <Text style={styles.helloTxt}>Hello, <Text style={styles.nameTxt}>{user.name}</Text></Text>}
 
-            <TouchableOpacity style={styles.authBtnWrapper} onPress={() => navigation.navigate('Register')}>
-                <View style={styles.authBtn}>
-                    <Feather color={colors.black} name='user-plus' size={17} />
+        {/* (Not Auth) => Login / Register Buttons */}
+        {!user && (
+            <View style={styles.authContainer}>
+                <View style={styles.authBtnWrapper} onPress={() => navigation.navigate('Login')}>
+                    <IconButton
+                        fill
+                        name='user'
+                        onPress={() => navigation.navigate("Login")}
+                    />
+
+                    <Text style={styles.authBtnText}>Sign In</Text>
                 </View>
-                <Text style={styles.authBtnText}>Sign Up</Text>
-            </TouchableOpacity>
-        </View>
+
+                <TouchableOpacity style={styles.authBtnWrapper} onPress={() => navigation.navigate('Register')}>
+                    <IconButton
+                        fill
+                        name='user-plus'
+                        onPress={() => navigation.navigate("Register")}
+                    />
+
+                    <Text style={styles.authBtnText}>Sign Up</Text>
+                </TouchableOpacity>
+            </View>
+        )}
 
         {/* Carousel */}
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>

@@ -33,18 +33,27 @@ const styles = StyleSheet.create({
         marginRight: 21,
         alignItems: 'center'
     },
-    authBtn: {
-        width: 38,
-        height: 38,
-        borderRadius: 50,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: colors.gray_l,
-    },
     authBtnText: {
         marginTop: 2,
         fontFamily: 'Montserrat-SemiBold',
         fontSize: 11,
+        color: colors.black,
+    },
+    userAvatar: {
+        width: 61,
+        height: 61,
+        borderRadius: 50
+    },
+    helloTxt: {
+        fontFamily: 'Montserrat-Regular',
+        fontSize: 20,
+        color: colors.black,
+        marginTop: 10,
+        marginBottom: 15,
+    },
+    nameTxt: {
+        fontFamily: 'Montserrat-Bold',
+        fontSize: 20,
         color: colors.black,
     },
     carouselProductWrapper: {
