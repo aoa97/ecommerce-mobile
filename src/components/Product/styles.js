@@ -16,8 +16,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     image: {
-        width: '25%',
+        width: '30%',
         height: 78,
+        resizeMode: 'contain'
     },
     textWrapper: {
         width: "60%",
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     price: {
         fontFamily: 'Montserrat-Bold',
         fontSize: 13,
-        color: colors.blue,
+        color: colors.black,
     },
 })
 

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     message1: {
         fontFamily: 'Montserrat-SemiBold',
         fontSize: 15,
-        color: colors.blue
+        color: colors.black
     },
     message2: {
         fontFamily: 'Montserrat-SemiBold',

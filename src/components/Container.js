@@ -7,7 +7,7 @@ import colors from '../assets/colors/colors';
 const Container = ({ children, navigation, RightIconComponent, light, dark, style, title }) => {
     return (
         <View style={[style, { flex: 1, backgroundColor: light ? colors.white : dark ? colors.black : colors.background_1 }]}>
-            <StatusBar translucent backgroundColor="transparent"  />
+            <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
 
             <View style={styles.container}>
                 <View style={styles.iconsWrapper}>
@@ -37,7 +37,7 @@ const Container = ({ children, navigation, RightIconComponent, light, dark, styl
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 18,
-        paddingTop: 25,
+        paddingTop: 40,
         flex: 1
     },
     iconsWrapper: {

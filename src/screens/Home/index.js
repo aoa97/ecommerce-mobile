@@ -132,11 +132,12 @@ const FlatHeader = ({ navigation }) => (
             <Title>Popular Brands</Title>
 
             <ScrollView style={styles.popularItemsWrapper} horizontal showsHorizontalScrollIndicator={false}>
-                <Popular img={require('../../assets/images/apple.png')} />
-                <Popular img={require('../../assets/images/asus.png')} />
-                <Popular img={require('../../assets/images/lenovo.png')} />
-                <Popular img={require('../../assets/images/dell.png')} />
                 <Popular img={require('../../assets/images/hp.png')} />
+                <Popular img={require('../../assets/images/asus.png')} />
+                <Popular img={require('../../assets/images/huwaei.png')} />
+                <Popular img={require('../../assets/images/lenovo.png')} />
+                <Popular img={require('../../assets/images/apple.png')} />
+                <Popular img={require('../../assets/images/dell.png')} />
             </ScrollView>
         </View>
 

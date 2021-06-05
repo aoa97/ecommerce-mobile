@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     price: {
         fontFamily: 'Montserrat-Bold',
         fontSize: 13,
-        color: colors.blue,
+        color: colors.black,
     },
 })
 

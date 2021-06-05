@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import Feather from 'react-native-vector-icons/Feather'
+import RNBootSplash from 'react-native-bootsplash'
 
 import Home from './screens/Home';
 import Search from './screens/Search';
@@ -45,7 +46,7 @@ const Menu = () => (
 
 const App = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer onReady={() => RNBootSplash.hide()}>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Menu" component={Menu} />
 

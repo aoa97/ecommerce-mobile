@@ -5,7 +5,7 @@ import colors from '../assets/colors/colors';
 const Popular = ({ img, onPress }) => {
     return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
-            <Image source={img} />
+            <Image source={img} style={styles.image} />
         </TouchableOpacity>
     );
 }
@@ -21,6 +21,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderWidth: 1,
         borderColor: "#F7F7F7"
+    },
+    image: {
+        resizeMode: 'contain',
+        width: '60%',
+        height: "60%"
     }
 })
 

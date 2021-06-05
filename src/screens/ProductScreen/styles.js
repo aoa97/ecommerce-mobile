@@ -4,8 +4,7 @@ import colors from '../../assets/colors/colors';
 const styles = StyleSheet.create({
     image: {
         width: '90%',
-        height: '50%',
-        marginTop: -40,
+        height: '35%',
         resizeMode: 'contain',
         alignSelf: 'center'
     },
