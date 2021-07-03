@@ -1,3 +1,23 @@
+/*TODO
+    [x] Splash
+    [x] Login
+    [x] Register
+    [x] Home user/no user
+    [x] Search
+    [x] Product
+    [x] Cart
+    //  
+    [x] Shipping Step => Fix El KeyboardAvoidingView
+    [x] Payment Step
+    [x] PlaceOrder Step
+    [] Order 
+    [] OrderList
+    [] Saved
+    [] Forgot
+    [] Profile & EditProfile
+    [] Onboarding Screens
+*/
+
 /**
  * @format
  */

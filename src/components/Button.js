@@ -34,8 +34,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     text: {
-        fontFamily: 'Montserrat-Bold',
+        fontFamily: 'Montserrat-SemiBold',
         fontSize: 14,
+        textTransform: 'uppercase',
         color: colors.white,
         width: '75%',
         textAlign: 'center'

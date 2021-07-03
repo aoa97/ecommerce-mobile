@@ -15,7 +15,7 @@ import userData from '../../assets/data/userData' // Temp Dummy Data
 
 
 // temp for testing both UI Scenarions (Auth/Not)
-const user = !userData ? userData : undefined
+const user = userData ? userData : undefined
 
 
 const Home = ({ navigation }) => {

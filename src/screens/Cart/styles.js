@@ -15,12 +15,12 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
     },
     ItemTitle: {
-        fontFamily: 'Montserrat-SemiBold',
+        fontFamily: 'Montserrat-Medium',
         fontSize: 15,
         color: colors.gray,
     },
     ItemValue: {
-        fontFamily: 'Montserrat-Bold',
+        fontFamily: 'Montserrat-SemiBold',
         fontSize: 16,
         color: colors.black,
     },

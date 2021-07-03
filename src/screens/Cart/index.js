@@ -43,7 +43,7 @@ const Cart = ({ navigation }) => {
                     </View>
                 </View>
 
-                <Button icon='credit-card'>CHECKOUT</Button>
+                <Button icon='credit-card' onPress={() => navigation.navigate('Shipping')}>CHECKOUT</Button>
             </View>
         </View>
 
