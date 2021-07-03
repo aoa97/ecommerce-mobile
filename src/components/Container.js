@@ -37,7 +37,7 @@ const Container = ({ children, navigation, RightIconComponent, light, dark, styl
 const styles = StyleSheet.create({
     container: {
         paddingHorizontal: 18,
-        paddingTop: 20,
+        paddingTop: 30,
         flex: 1
     },
     iconsWrapper: {

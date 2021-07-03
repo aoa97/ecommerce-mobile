@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { View, Text, Button } from 'react-native';
-// import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
 import StepIndicator from 'react-native-step-indicator';
 import colors from './assets/colors/colors';
 

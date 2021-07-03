@@ -11,6 +11,7 @@ import Login from './screens/Login';
 import Product from './screens/ProductScreen';
 import Register from './screens/Register';
 import Order from './screens/Order';
+import Orders from './screens/Orders';
 import Shipping from './screens/Checkout/Shipping'
 import Payment from './screens/Checkout/Payment'
 import PlaceOrder from './screens/Checkout/PlaceOrder'
@@ -61,6 +62,7 @@ const App = () => {
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Register" component={Register} />
                 <Stack.Screen name="Order" component={Order} />
+                <Stack.Screen name="Orders" component={Orders} />
 
                 {/* Payment Steps */}
                 <Stack.Screen name="Shipping" component={Shipping} />
