@@ -10,8 +10,8 @@
     [x] Shipping Step => Fix El KeyboardAvoidingView
     [x] Payment Step
     [x] PlaceOrder Step
-    [] Order 
-    [] OrderList
+    [x] Order 
+    [x] OrderList
     [] Saved
     [] Forgot
     [] Profile & EditProfile
@@ -22,8 +22,8 @@
  * @format
  */
 
-import {AppRegistry} from 'react-native';
+import { AppRegistry } from 'react-native';
 import App from './src/App';
-import {name as appName} from './app.json';
+import { name as appName } from './app.json';
 
 AppRegistry.registerComponent(appName, () => App);

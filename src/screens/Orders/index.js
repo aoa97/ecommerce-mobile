@@ -39,7 +39,7 @@ const Orders = ({ navigation }) => {
 
                         {/* Bottom */}
                         <View style={styles.bottomWrapper}>
-                            <TouchableOpacity style={styles.buttonWrapper}>
+                            <TouchableOpacity style={styles.buttonWrapper} onPress={() => navigation.navigate("Order")}>
                                 <Text style={styles.buttonText}>Details</Text>
                             </TouchableOpacity>
                             <Tag

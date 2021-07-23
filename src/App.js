@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import Feather from 'react-native-vector-icons/Feather'
+import Material from 'react-native-vector-icons/MaterialCommunityIcons'
 import RNBootSplash from 'react-native-bootsplash'
 
 import Home from './screens/Home';
@@ -17,6 +18,7 @@ import Payment from './screens/Checkout/Payment'
 import PlaceOrder from './screens/Checkout/PlaceOrder'
 import colors from './assets/colors/colors';
 import Cart from './screens/Cart';
+import Saved from './screens/Saved';
 
 const Stack = createStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -45,6 +47,13 @@ const Menu = () => (
                 drawerIcon: ({ color }) => <Feather name='shopping-bag' color={color} size={15} />,
             }}
         />
+        <Drawer.Screen
+            name="Saved"
+            component={Saved}
+            options={{
+                drawerIcon: ({ color }) => <Material name='heart' color={color} size={15} />,
+            }}
+        />
     </Drawer.Navigator>
 )
 
@@ -59,6 +68,7 @@ const App = () => {
                 <Stack.Screen name="Search" component={Search} />
                 <Stack.Screen name="Product" component={Product} />
                 <Stack.Screen name="Cart" component={Cart} />
+                <Stack.Screen name="Saved" component={Saved} />
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="Register" component={Register} />
                 <Stack.Screen name="Order" component={Order} />
@@ -72,5 +82,8 @@ const App = () => {
         </NavigationContainer>
     );
 }
+
+// import Play from './Play'
+// const App = () => <Play />
 
 export default App;
