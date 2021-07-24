@@ -1,39 +1,48 @@
-import React from 'react';
-import { View, Text, TouchableOpacity, ScrollView, ImageBackground, FlatList, Image } from 'react-native';
-import Feather from 'react-native-vector-icons/Feather'
+import React, { useEffect, useState } from 'react';
+import { View, Text, TouchableOpacity, ScrollView, ImageBackground, FlatList, Image, ActivityIndicator } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux'
 
+import { getProducts } from '../../actions/productActions';
 import Container from '../../components/Container';
 import Popular from '../../components/Popular';
 import Title from '../../components/Title';
 import Product from '../../components/Product';
 import IconButton from '../../components/IconButton';
-import colors from '../../assets/colors/colors';
+import Loader from '../../components/Loader';
 import styles from './styles';
 
-import productData from '../../assets/data/productData' // Temp Dummy Data 
 import userData from '../../assets/data/userData' // Temp Dummy Data 
 
 
 // temp for testing both UI Scenarions (Auth/Not)
 const user = userData ? userData : undefined
 
-
 const Home = ({ navigation }) => {
+    // Redux hooks
+    const dispatch = useDispatch()
+    const { loading, error, products } = useSelector(state => state.productList)
+
+    // Fetch products 
+    useEffect(() => dispatch(getProducts()), [dispatch])
+
     return (
         <Container>
-            {/* Best Selling */}
-            <FlatList
-                style={styles.bestItemsWrapper}
-                data={productData}
-                keyExtractor={item => item.id}
-                renderItem={({ item }) => (
-                    <TouchableOpacity onPress={() => navigation.navigate("Product", item)}>
-                        <Product product={item} />
-                    </TouchableOpacity>
-                )}
-                ListHeaderComponent={() => <FlatHeader navigation={navigation} />}
-                showsVerticalScrollIndicator={false}
-            />
+            {loading && <Loader />}
+
+            {!loading && (
+                < FlatList
+                    style={styles.bestItemsWrapper}
+                    data={products}
+                    keyExtractor={item => item.id}
+                    renderItem={({ item }) => (
+                        <TouchableOpacity onPress={() => navigation.navigate("Product", item)}>
+                            <Product product={item} />
+                        </TouchableOpacity>
+                    )}
+                    ListHeaderComponent={() => <FlatHeader navigation={navigation} />}
+                    showsVerticalScrollIndicator={false}
+                />
+            )}
         </Container>
     );
 }

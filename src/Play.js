@@ -1,69 +1,21 @@
-import React, { useState } from 'react';
-import { View, Text, Button } from 'react-native';
-import StepIndicator from 'react-native-step-indicator';
-import colors from './assets/colors/colors';
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
+import IndexScreen from './play/screens/IndexScreen';
+import { BlogProvider } from './play/context/BlogContext';
 
-const Test = () => {
-    const [currentPosition, setCurrentPosition] = useState(0)
-    console.log(currentPosition);
+const StackNavigator = createStackNavigator()
 
-    const secondIndicatorStyles = {
-        stepIndicatorSize: 30,
-        currentStepIndicatorSize: 40,
-        separatorStrokeWidth: 2,
-        currentStepStrokeWidth: 3,
-        stepStrokeCurrentColor: '#fe7013',
-        stepStrokeWidth: 3,
-        separatorStrokeFinishedWidth: 4,
-        stepStrokeFinishedColor: '#fe7013',
-        stepStrokeUnFinishedColor: '#aaaaaa',
-        separatorFinishedColor: '#fe7013',
-        separatorUnFinishedColor: '#aaaaaa',
-        stepIndicatorFinishedColor: '#fe7013',
-        stepIndicatorUnFinishedColor: '#ffffff',
-        stepIndicatorCurrentColor: '#ffffff',
-        stepIndicatorLabelFontSize: 13,
-        currentStepIndicatorLabelFontSize: 13,
-        stepIndicatorLabelCurrentColor: '#fe7013',
-        stepIndicatorLabelFinishedColor: '#ffffff',
-        stepIndicatorLabelUnFinishedColor: '#aaaaaa',
-        labelColor: '#999999',
-        labelSize: 13,
-        currentStepLabelColor: '#fe7013',
-    };
-
+const Play = () => {
     return (
-        <View style={{ flex: 1, justifyContent: 'space-between' , padding: 50}}>
-            <StepIndicator
-                customStyles={secondIndicatorStyles}
-                stepCount={3}
-                currentPosition={currentPosition}
-                onPress={(position) => setCurrentPosition(position)}
-                labels={[
-                    'Shipping',
-                    'Payment',
-                    'Place Order',
-                ]}
-
-            />
-
-            <Button
-                title="Previous"
-                onPress={() => {
-                    if(currentPosition > 0){
-                        setCurrentPosition(currentPosition - 1)
-                    }
-                }}
-            />
-           
-            <Button
-                title="Next"
-                onPress={() => setCurrentPosition(currentPosition + 1)}
-            />
-        </View>
-    )
+        <BlogProvider >
+            <NavigationContainer>
+                <StackNavigator.Navigator>
+                    <StackNavigator.Screen name="Index" component={IndexScreen} />
+                </StackNavigator.Navigator>
+            </NavigationContainer>
+        </BlogProvider>
+    );
 }
 
-
-
-export default Test
+export default Play;
