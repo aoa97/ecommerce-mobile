@@ -1,14 +1,27 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
+import { persistStore, persistReducer } from 'redux-persist'
+import storage from '@react-native-community/async-storage'
 // Reducers
 import { productListReducer } from './reducers/productReducers'
+import { userRegisterReducer, userLoginReducer } from './reducers/userReducers'
+
+const persistConfig = {
+    key: 'root',
+    storage,
+    whitelist: ['userLogin']
+}
 
 const reducer = combineReducers({
-    productList: productListReducer
+    // Product
+    productList: productListReducer,
+    // User
+    userRegister: userRegisterReducer,
+    userLogin: userLoginReducer
 })
+const persistedReducer = persistReducer(persistConfig, reducer)
 
-// Remove composeWithDevTools in Productions 
-const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)))
+export const store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(thunk))) // Remove composeWithDevTools in Productions    
+export const persistor = persistStore(store)
 
-export default store

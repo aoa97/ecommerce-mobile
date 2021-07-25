@@ -1,15 +1,16 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, View, ActivityIndicator } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather'
 import colors from '../assets/colors/colors';
 
-const Button = ({ style, children, onPress, blue, icon }) => {
+const Button = ({ style, children, onPress, blue, icon, loading }) => {
     return (
         <TouchableOpacity
             style={[style, styles.container, { backgroundColor: blue ? colors.blue : colors.black }]}
             onPress={onPress}
         >
-            <Text style={styles.text}>{children}</Text>
+            {loading && <ActivityIndicator color={colors.white} />}
+            {!loading && <Text style={styles.text}>{children}</Text>}
 
             {icon && (
                 <View style={styles.iconWrapper}>

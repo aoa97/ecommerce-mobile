@@ -6,7 +6,9 @@ import Feather from 'react-native-vector-icons/Feather'
 import Material from 'react-native-vector-icons/MaterialCommunityIcons'
 import RNBootSplash from 'react-native-bootsplash'
 import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 
+import { store, persistor } from './store';
 import Home from './screens/Home';
 import Search from './screens/Search';
 import Login from './screens/Login';
@@ -20,7 +22,7 @@ import PlaceOrder from './screens/Checkout/PlaceOrder'
 import colors from './assets/colors/colors';
 import Cart from './screens/Cart';
 import Saved from './screens/Saved';
-import store from './store';
+import Loader from './components/Loader';
 
 const Stack = createStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -62,27 +64,29 @@ const Menu = () => (
 
 const App = () => {
     return (
-        <Provider store={store}> 
-            <NavigationContainer onReady={() => RNBootSplash.hide()}>
-                <Stack.Navigator screenOptions={{ headerShown: false }}>
-                    <Stack.Screen name="Menu" component={Menu} />
+        <Provider store={store}>
+            <PersistGate persistor={persistor} loading={<Loader />}>
+                <NavigationContainer onReady={() => RNBootSplash.hide()}>
+                    <Stack.Navigator screenOptions={{ headerShown: false }}>
+                        <Stack.Screen name="Menu" component={Menu} />
 
-                    <Stack.Screen name="Home" component={Home} />
-                    <Stack.Screen name="Search" component={Search} />
-                    <Stack.Screen name="Product" component={Product} />
-                    <Stack.Screen name="Cart" component={Cart} />
-                    <Stack.Screen name="Saved" component={Saved} />
-                    <Stack.Screen name="Login" component={Login} />
-                    <Stack.Screen name="Register" component={Register} />
-                    <Stack.Screen name="Order" component={Order} />
-                    <Stack.Screen name="Orders" component={Orders} />
+                        <Stack.Screen name="Home" component={Home} />
+                        <Stack.Screen name="Search" component={Search} />
+                        <Stack.Screen name="Product" component={Product} />
+                        <Stack.Screen name="Cart" component={Cart} />
+                        <Stack.Screen name="Saved" component={Saved} />
+                        <Stack.Screen name="Login" component={Login} />
+                        <Stack.Screen name="Register" component={Register} />
+                        <Stack.Screen name="Order" component={Order} />
+                        <Stack.Screen name="Orders" component={Orders} />
 
-                    {/* Payment Steps */}
-                    <Stack.Screen name="Shipping" component={Shipping} />
-                    <Stack.Screen name="Payment" component={Payment} />
-                    <Stack.Screen name="PlaceOrder" component={PlaceOrder} />
-                </Stack.Navigator>
-            </NavigationContainer>
+                        {/* Payment Steps */}
+                        <Stack.Screen name="Shipping" component={Shipping} />
+                        <Stack.Screen name="Payment" component={Payment} />
+                        <Stack.Screen name="PlaceOrder" component={PlaceOrder} />
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </PersistGate>
         </Provider>
     );
 }

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StatusBar } from 'react-native';
 
+import { useDispatch, useSelector } from 'react-redux'
+
+import { loginUser } from '../../actions/userActions'
 import Container from '../../components/Container';
 import Title from '../../components/Title';
 import Button from '../../components/Button';
@@ -8,8 +11,29 @@ import colors from '../../assets/colors/colors';
 import styles from './styles';
 
 const Login = ({ navigation }) => {
+    const dispatch = useDispatch()
+    const { loading, user, error } = useSelector(state => state.userLogin)
+
+    // States
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleLogin = () => {
+        // Validation will be added later
+        dispatch(loginUser({
+            email,
+            password,
+        }))
+    }
+
+    useEffect(() => {
+        if (user) {
+            navigation.navigate('Home')
+        }
+    }, [user, navigation])
+
     return (
-        <Container dark  style={{ paddingVertical: 22 }}>
+        <Container dark style={{ paddingVertical: 22 }}>
             <StatusBar translucent backgroundColor="transparent" />
 
             {/* Text */}
@@ -21,21 +45,32 @@ const Login = ({ navigation }) => {
             {/* Form */}
             <View style={styles.formWrapper}>
                 <TextInput
+                    keyboardType='email-address'
                     style={styles.input}
                     placeholderTextColor={colors.gray}
                     placeholder="E-mail Address"
+                    value={email}
+                    onChangeText={(email) => setEmail(email)}
                 />
                 <TextInput
+                    secureTextEntry
                     style={styles.input}
                     placeholderTextColor={colors.gray}
                     placeholder="Password"
+                    value={password}
+                    onChangeText={(password) => setPassword(password)}
                 />
 
                 <TouchableOpacity style={styles.forgot}>
                     <Text style={styles.subtitle}>Forgot Password?</Text>
                 </TouchableOpacity>
 
-                <Button blue style={{ marginTop: 28 }}>SIGN IN</Button>
+                <Button
+                    blue
+                    style={{ marginTop: 28 }}
+                    onPress={handleLogin}
+                    loading={loading}
+                >SIGN IN</Button>
             </View>
 
             {/* Don't have an account */}
